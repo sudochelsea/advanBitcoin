@@ -125,3 +125,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+GHOST_KEY = os.getenv('GHOST_KEY')
+BASE_URL = os.getenv('BASE_URL')
+VERSION = 'v3'
+LIMIT = 12
