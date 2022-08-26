@@ -10,10 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+#python imports
 from pathlib import Path
+
+#third-party app imports
+#eg.import sentry_sdk
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+#define environment variable
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -23,20 +30,30 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-tsoq$a01k&)5kwy$5$i47cy(z!+6w$)5n49=+pxa6_f9x5+3w*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+#false in production
 DEBUG = True
 
+# ip addresses that can access the site
 ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    #Default Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    #Third Party Apps
+    #'rest_frameworks',
+
+    # My apps
+    'testconference',
+
 ]
 
 MIDDLEWARE = [
@@ -62,8 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'testblog',
-                'testconference'
+                'testconference',
             ],
         },
     },
@@ -80,6 +96,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+
+    #use postgres for production
 }
 
 
@@ -102,12 +120,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Django CORS Settings
+CORS_ALLOW_ALL_ORIGINS = True
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Accra'
 
 USE_I18N = True
 
@@ -119,10 +140,21 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+#Media files (user uploaded images )
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+#
+
+
+
+#production configuration
+    #if environment == production
+        #security configurationn
+
+
+#logging configuration -- logs error into console
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GHOST_KEY = os.getenv('GHOST_KEY')
